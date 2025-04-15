@@ -1,6 +1,6 @@
 # Project-3-MIGRATION-OF-BITBUCKET-DATA-CENTER-FROM-ONE-REGION-TO-ANOTHER-REGION-LEVERAGING-MGN-IN-AWS
 
-# Project-3-MIGRATION-OF-BITBUCKET-DATA-from-one-region-to-another
+# MIGRATION-OF-BITBUCKET-DATA-from-one-region(N Virginia)-to-another(Oregon)
 ##Prerequisites
 AWS Account: Ensure you have access to the AWS accounts for both source and target regions.
 Bitbucket Data Center: Ensure you have administrative access to your existing Bitbucket Data Center.
