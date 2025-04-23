@@ -81,7 +81,7 @@ AWS MGN will create staging resources in the target region to replicate the sour
   ```
 
   <img width="713" alt="Image" src="https://github.com/user-attachments/assets/fb40e040-9c63-4fc4-98ec-f0ed16c32866" />
-this will istall the application agent
+this will install the application agent
 
 - Verify Installation
 After installation, the replication agent will register the source server with AWS MGN.
