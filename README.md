@@ -64,7 +64,7 @@ AWS MGN will create staging resources in the target region to replicate the sour
 -In the Source Servers section, click `Add Source Server`.
 - Download the Replication Agent installer for your operating system
 - select `Linux` or `windows`
-- add `the access` and `secret key`
+- add `the access key` and `secret key` gotten from AIM user from aws
 <img width="904" alt="Image" src="https://github.com/user-attachments/assets/f90a0550-aec8-40fb-916e-aafbb33cd27f" />
 
 
