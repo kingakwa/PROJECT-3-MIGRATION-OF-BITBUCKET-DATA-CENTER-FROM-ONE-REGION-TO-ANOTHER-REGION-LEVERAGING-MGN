@@ -12,7 +12,8 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 Log in to the AWS Management Console. use t2medium, linux 2, 50GB, keypair, port 22(ssh), 7990(bitbucket) 
 
 
-#user data 
+## user data
+The user data will update the system, install docker, create a directory for bitbucket data, and create the bitbucket docker container on the server.
 ```
 #!/bin/bash
 # Update the system
