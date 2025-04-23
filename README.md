@@ -54,7 +54,7 @@ copy the public ip address of the instance and add the port number e.g `52.7.182
 <img width="650" alt="Image" src="https://github.com/user-attachments/assets/9e205dc6-4f26-459d-bab5-5203c179eeb4" />
 
 # Perform the Migration Using MGN
-##Start Replication:
+## Start Replication:
 In the MGN console, start the replication process.
 AWS MGN will create staging resources in the target region to replicate the source instances.
 
