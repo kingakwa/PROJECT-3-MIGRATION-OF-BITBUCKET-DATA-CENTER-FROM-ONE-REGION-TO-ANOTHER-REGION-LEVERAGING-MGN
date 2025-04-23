@@ -61,15 +61,14 @@ copy the public ip address of the instance and add the port number e.g `52.7.182
 In the MGN console, start the replication process.
 AWS MGN will create staging resources in the target region to replicate the source instances.
 
-# intallation of application on agent
+# intallation of application agent
 - use aws-mgn application migration service in the target region (Oregon)
 - Navigate to the AWS Application Migration Service (MGN) section.
 -In the Source Servers section, click `Add Source Server`.
 - Download the Replication Agent installer for your operating system
 - select `Linux` or `windows`
-- add `the access key` and `secret key` gotten from AIM user from aws
-<img width="904" alt="Image" src="https://github.com/user-attachments/assets/f90a0550-aec8-40fb-916e-aafbb33cd27f" />
-
+- add `the access key` and `secret key` gotten from `IAM` `user` `access key` from aws.
+<img width="904" alt="Image" src="https://github.com/user-attachments/assets/c46edb23-afd1-41b1-8271-f164680cd519" />
 
 - Download the installer using this command on you source terminal
 - 
@@ -80,11 +79,11 @@ AWS MGN will create staging resources in the target region to replicate the sour
   Make the installer executable and Run the installer with root privileges using this command, make sure Replace <AWS_REGION> with the region where AWS MGN is configured (e.g., us-east-1 target region)
   
   ```
-  sudo chmod +x aws-replication-installer-init; sudo ./aws-replication-installer-init --region us-east-1
+  sudo chmod +x aws-replication-installer-init; sudo ./aws-replication-installer-init --region us-west-2 # Target region Oregon
   ```
 
   <img width="713" alt="Image" src="https://github.com/user-attachments/assets/fb40e040-9c63-4fc4-98ec-f0ed16c32866" />
-this will install the application agent
+- this will install the application agent
 
 - Verify Installation
 After installation, the replication agent will register the source server with AWS MGN.
