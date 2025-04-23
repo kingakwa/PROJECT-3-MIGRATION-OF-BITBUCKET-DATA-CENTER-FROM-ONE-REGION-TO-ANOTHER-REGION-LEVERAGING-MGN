@@ -12,7 +12,7 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 
 Log in to the AWS Management Console and launch an instance. use t2medium, linux 2, 50GB, keypair, port 22(ssh), 7990(bitbucket), take note of the region.
 
-<img width="915" alt="Image" src="https://github.com/user-attachments/assets/7972a00a-b218-461a-ac13-5f9372374f4b" />
+<img width="899" alt="Image" src="https://github.com/user-attachments/assets/a4dd03e6-b285-4882-a8a4-76b2cfd2db29" />
 
 ## user data
 The user data will update the system, install docker, create a directory for bitbucket data, and create the bitbucket docker container on the server.
@@ -93,39 +93,62 @@ The source server should appear as "Pending" or "Ready for replication."
 -select `Back`
 -select `source server`
 
--monitor the replication as it moves from `Not ready to ready to test, test in progress, ready for cutover, cutover in progress, cutover complete`
+- monitor the replication as it moves from `Not ready to ready to test, test in progress, ready for cutover, cutover in progress, cutover complete`
+- 
 <img width="923" alt="Image" src="https://github.com/user-attachments/assets/a6306f0d-9540-4e12-a21f-de0548e8e4bd" />
-- Ready for testing.
-  click `test and cutover` then select `launch test instance`
-   an IP internal main testing server is form, you can test this instance.
-  if it does not have a public address, create one using `Elastic IP`
 
-  -test in progress
-  *creat an Elastic IP address
+- Ready for testing.
+  - Click `test and cutover` then select `launch test instance`
+  - An IP internal main testing server is created, you can test this instance in the internet.
+  - if it does not have a public address, create one using `Elastic IP`
+
+        
+- test in progress
+  - creat an Elastic IP address
   - Go to the ec2 internal instance and select it
   - select `elastic Ip` at the left
   - click `Allocate elastic ip address`
   - select the allocated Ip and take `associate IP`
   - chose the `instance` and the `private ip`
-  - also attached a `security group` to access the it openning the right ports
- <img width="907" alt="Image" src="https://github.com/user-attachments/assets/f7439008-fe8c-4619-abe3-3a3aee99af3a" />
-  - click  `test and cutover` and select `mark as ready for cutover` then take continue
+  - also attached a `security group` to access it openning the right ports e.g `7990`
+    <img width="907" alt="Image" src="https://github.com/user-attachments/assets/0744e486-ab8e-4e40-ac13-f0346e240a20" />
+    <img width="955" alt="Image" src="https://github.com/user-attachments/assets/9307de85-9a6a-4121-8952-e7d6bbe5ba0c" />
+
+    - An IP internal main testing server is created, you can test this instance in the internet.
+     ![Image](https://github.com/user-attachments/assets/183a3492-4dc8-4be8-af16-801323ea05a7)
+    - This shows that we have migrated to the server.
+ 
+ - source server
+  - click  `test and cutover` and select `mark as ready for cutover` then take continue. This is do the final migration, will create a new server for your actual migration. the cutover will delete a replication server.
+
+    <img width="884" alt="Image" src="https://github.com/user-attachments/assets/ad0634e4-179d-4020-85c2-db3a77e056e2" />
+
+    - The replication instances are terminated
+      <img width="928" alt="Image" src="https://github.com/user-attachments/assets/ad2cf711-ffaa-4429-ad1c-3277da70279e" />
  
   - Perform a Test Cutover
   - select test and cutover and select launch cutover instance and select launch; this will create another server to replicate the serve.
+
+ <img width="884" alt="Image" src="https://github.com/user-attachments/assets/82585c51-1bf2-478e-a065-d9d997c3da15" />
  
-  - cutover in progress 
-On the Source Servers page, select the server marked Ready for Cutover.
+- cutover in progress 
+  - On the Source Servers page, select the server marked Ready for Cutover.
 
 - Click Launch Cutover Instances.
 
 - Review and confirm the instance settings, then click Launch.
 
 Expected Result: The cutover instance is launched in AWS, and the server enters the Cutover in Progress state. This step involves transitioning production traffic to the new environment.
-
+<img width="887" alt="Image" src="https://github.com/user-attachments/assets/f30b539f-95c6-4573-b569-23a7c4dabcb9" />
+ - New servers (IP internal, webapp-server, AWS application Migration Service and Replication server) are created with with all the data inside
+   <img width="928" alt="Image" src="https://github.com/user-attachments/assets/f959b95a-c1ad-4513-9221-6a56238ed7f8" />
+   - Test the newly Internal server by associating the elastic ip and security group before testing on the server.
+   
 - Cutover Complete
-- fter verifying that the cutover instance is operating correctly, return to the Source Servers page.
-
+  - After verifying that the cutover instance is operating correctly, return to the Source Servers page.
+  - click `test and cutover` `finalize cutover` # all the servers involved in the migration and replication data will be deleted acept you last application server. 
  click `Mark as Cutover Complete`.
 
 Expected Result: The server status changes to Cutover Complete, signifying that the migration is finished. The cutover instance is now fully operational, and the source server can be archived (take `action` and select `mark as archived` )or decommissioned as needed.
+
+<img width="908" alt="Image" src="https://github.com/user-attachments/assets/f2b11b86-192c-44ea-bb4d-fd02a3045fc8" />
