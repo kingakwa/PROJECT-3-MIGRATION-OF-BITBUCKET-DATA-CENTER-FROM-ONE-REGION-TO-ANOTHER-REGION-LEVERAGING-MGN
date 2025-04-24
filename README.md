@@ -9,7 +9,7 @@ Networking: Ensure proper VPC, subnets, security groups, and routing are configu
 Backups: Create a full backup of your Bitbucket Data Center (database, shared storage, and configuration files) before migration.
 
 ## Architecture
-- Components
+
 - Source Region (us-east-1):- EC2 instances hosting the Bitbucket application and data.
 
 - Target Region (us-west-2):- Replicated EC2 instances for hosting Bitbucket data after migration.
