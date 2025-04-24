@@ -218,6 +218,13 @@ The source server should appear as "Pending" or "Ready for replication."
 
 <img width="908" alt="Image" src="https://github.com/user-attachments/assets/f2b11b86-192c-44ea-bb4d-fd02a3045fc8" />
 
+
+## Testing your replicated server in the Target region.
+- Open AWS MGN console in the target region (Oregon)
+- check replication status is healthy and launch the test instance
+- Access the test instance in EC2 and connect to it via SSH and port 7990 to get to the bitbucket server.
+- verify that the application is working and the data looks consistent
+  
 ## Conclusion
 This project successfully outlines the migration of Bitbucket data from the AWS N Virginia region to the Oregon region using AWS Application Migration Service (MGN). By following the AWS Console procedures, the migration ensures minimal downtime and preserves data integrity. This process is ideal for organizations looking to transition workloads across AWS regions.
 
