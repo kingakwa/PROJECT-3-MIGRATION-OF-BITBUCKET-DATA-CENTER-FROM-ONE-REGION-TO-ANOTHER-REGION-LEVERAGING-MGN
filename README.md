@@ -169,7 +169,8 @@ Expected Result: The cutover instance is launched in AWS, and the server enters 
   - click `test and cutover` `finalize cutover` # all the servers involved in the migration and replication data will be deleted acept you last application server. 
  click `Mark as Cutover Complete`.
 
-Expected Result: The server status changes to Cutover Complete, signifying that the migration is finished. The cutover instance is now fully operational, and the source server can be archived (take `action` and select `mark as archived` )or decommissioned as needed.
+Expected Result: The server status changes to Cutover Complete, signifying that the migration is finished. The cutover instance is now fully operational, and the source server can be archived (take `action` and select `mark as archived` ) or decommissioned as needed.
+- migration successful to the new region Oregon us-west-2
 
 <img width="908" alt="Image" src="https://github.com/user-attachments/assets/f2b11b86-192c-44ea-bb4d-fd02a3045fc8" />
 
