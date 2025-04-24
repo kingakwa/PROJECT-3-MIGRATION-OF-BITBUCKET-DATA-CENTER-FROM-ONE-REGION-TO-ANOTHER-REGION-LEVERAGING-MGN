@@ -24,7 +24,7 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 
 Log in to the AWS Management Console and launch an instance. use t2medium, linux 2, 50GB, keypair,enable auto-assign public IP, open port 22(ssh), 7990(bitbucket), take note of the region.
 
-<img width="899" alt="Image" src="https://github.com/user-attachments/assets/a4dd03e6-b285-4882-a8a4-76b2cfd2db29" />
+<img width="899" alt="Image" src="https://github.com/user-attachments/assets/8a180850-558d-4f95-89d2-af899ab33f3a" />
 
 ## user data
 The user data will update the system, install docker, create a directory for bitbucket data, and create the bitbucket docker container on the server.
@@ -83,9 +83,8 @@ AWS MGN will create staging resources in the target region to replicate the sour
 - Download the Replication Agent installer for your operating system
 - select `Linux` or `windows`
 - add `the access key` and `secret key` gotten from `IAM` `user` `access key` from aws.
-<img width="916" alt="Image" src="https://github.com/user-attachments/assets/7663bdbf-a04e-4e82-82c6-43da0fa8abac" />
-
-<img width="889" alt="Image" src="https://github.com/user-attachments/assets/951ad5dd-10f5-4d1a-bdda-4e662121237d" />
+- 
+<img width="904" alt="Image" src="https://github.com/user-attachments/assets/035d14e8-e41b-43fb-b19f-d67f05cfe407" />
 
 -Terminal
 
@@ -116,7 +115,7 @@ The source server should appear as "Pending" or "Ready for replication."
 - The replication intiation step will have this created:
 -  Create security groups, Launch Replication Server, Boot Replication Server, Authenticate with service, Download replication software, Create staging disks, Attach staging disks, Pair Replication Server with AWS Replication Agent, Connect AWS Replication Agent to Replication Server and Start data transfer
 -  
-<img width="918" alt="Image" src="https://github.com/user-attachments/assets/7b632dd9-fc39-442a-9a3b-bc7633cb5c61" />
+![Image](https://github.com/user-attachments/assets/317e5a40-78d2-4941-bcbc-9c0bcd84aeb3)
 
 - Ready for testing.
   - Click `test and cutover` then select `launch test instance`
@@ -173,3 +172,9 @@ Expected Result: The cutover instance is launched in AWS, and the server enters 
 Expected Result: The server status changes to Cutover Complete, signifying that the migration is finished. The cutover instance is now fully operational, and the source server can be archived (take `action` and select `mark as archived` )or decommissioned as needed.
 
 <img width="908" alt="Image" src="https://github.com/user-attachments/assets/f2b11b86-192c-44ea-bb4d-fd02a3045fc8" />
+
+## Conclusion
+This project successfully outlines the migration of Bitbucket data from the AWS N Virginia region to the Oregon region using AWS Application Migration Service (MGN). By following the AWS Console procedures, the migration ensures minimal downtime and preserves data integrity. This process is ideal for organizations looking to transition workloads across AWS regions.
+
+
+
