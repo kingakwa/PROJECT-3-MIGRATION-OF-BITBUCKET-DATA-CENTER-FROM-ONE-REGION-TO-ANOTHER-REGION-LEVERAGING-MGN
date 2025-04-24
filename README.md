@@ -10,7 +10,7 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 
 ## Bitbucket Data Center in AWS:
 
-Log in to the AWS Management Console and launch an instance. use t2medium, linux 2, 50GB, keypair, port 22(ssh), 7990(bitbucket), take note of the region.
+Log in to the AWS Management Console and launch an instance. use t2medium, linux 2, 50GB, keypair,enable auto-assign public IP, open port 22(ssh), 7990(bitbucket), take note of the region.
 
 <img width="899" alt="Image" src="https://github.com/user-attachments/assets/a4dd03e6-b285-4882-a8a4-76b2cfd2db29" />
 
@@ -43,18 +43,21 @@ sudo systemctl enable docker
 ```
 
 
-run 
-docker ps to see the containers. 
+- run 
+```
+docker ps #to see the containers.
+```
+<img width="467" alt="Image" src="https://github.com/user-attachments/assets/b85daaf8-27fb-4164-8462-8f9677573a70" />
 
-run this to check if docker is actice and running 
-
+- run
+- Check if docker is actice and running 
 ```
 sudo systemctl status docker
 ```
-<img width="626" alt="Image" src="https://github.com/user-attachments/assets/0a36a9ce-8756-43cc-803b-10f85ff90da5" />
+<img width="482" alt="Image" src="https://github.com/user-attachments/assets/261fc806-326e-4fea-8dd5-b358e9c5bd08" />
 
-copy the public ip address of the instance and add the port number e.g `52.7.182.131:7990`
-<img width="650" alt="Image" src="https://github.com/user-attachments/assets/9e205dc6-4f26-459d-bab5-5203c179eeb4" />
+- copy the public ip address of the instance and add the port number e.g `52.7.182.131:7990`
+![Image](https://github.com/user-attachments/assets/f4f49d03-be5e-40ed-96d2-7276105e32af)
 
 # Perform the Migration Using MGN
 ## Start Replication:
@@ -68,22 +71,26 @@ AWS MGN will create staging resources in the target region to replicate the sour
 - Download the Replication Agent installer for your operating system
 - select `Linux` or `windows`
 - add `the access key` and `secret key` gotten from `IAM` `user` `access key` from aws.
-<img width="904" alt="Image" src="https://github.com/user-attachments/assets/c46edb23-afd1-41b1-8271-f164680cd519" />
+<img width="916" alt="Image" src="https://github.com/user-attachments/assets/7663bdbf-a04e-4e82-82c6-43da0fa8abac" />
 
-- Download the installer using this command on you source terminal
-- 
+<img width="889" alt="Image" src="https://github.com/user-attachments/assets/951ad5dd-10f5-4d1a-bdda-4e662121237d" />
+
+-Terminal
+
+  - Download the installer using this command on you source terminal
+ 
    ```
   sudo wget -O ./aws-replication-installer-init https://aws-application-migration-service-us-east-1.s3.us-east-1.amazonaws.com/latest/linux/aws-replication-installer-init
    ```
 
-  Make the installer executable and Run the installer with root privileges using this command, make sure Replace <AWS_REGION> with the region where AWS MGN is configured (e.g., us-east-1 target region)
-  
+ - Make the installer executable and Run the installer with root privileges using this command, make sure Replace <AWS_REGION> with the region where AWS MGN is configured (e.g., us-west-2 target region)
+
+  -  Install the application agent
   ```
   sudo chmod +x aws-replication-installer-init; sudo ./aws-replication-installer-init --region us-west-2 # Target region Oregon
   ```
-
   <img width="713" alt="Image" src="https://github.com/user-attachments/assets/fb40e040-9c63-4fc4-98ec-f0ed16c32866" />
-- this will install the application agent
+  
 
 - Verify Installation
 After installation, the replication agent will register the source server with AWS MGN.
@@ -94,7 +101,8 @@ The source server should appear as "Pending" or "Ready for replication."
 -select `source server`
 
 - monitor the replication as it moves from `Not ready to ready to test, test in progress, ready for cutover, cutover in progress, cutover complete`
-- 
+- The replication intiation step will have this created:
+-  Create security groups, Launch Replication Server, Boot Replication Server, Authenticate with service, Download replication software, Create staging disks, Attach staging disks, Pair Replication Server with AWS Replication Agent, Connect AWS Replication Agent to Replication Server and Start data transfer
 <img width="923" alt="Image" src="https://github.com/user-attachments/assets/a6306f0d-9540-4e12-a21f-de0548e8e4bd" />
 
 - Ready for testing.
