@@ -115,7 +115,8 @@ The source server should appear as "Pending" or "Ready for replication."
 - monitor the replication as it moves from `Not ready to ready to test, test in progress, ready for cutover, cutover in progress, cutover complete`
 - The replication intiation step will have this created:
 -  Create security groups, Launch Replication Server, Boot Replication Server, Authenticate with service, Download replication software, Create staging disks, Attach staging disks, Pair Replication Server with AWS Replication Agent, Connect AWS Replication Agent to Replication Server and Start data transfer
-<img width="923" alt="Image" src="https://github.com/user-attachments/assets/a6306f0d-9540-4e12-a21f-de0548e8e4bd" />
+-  
+<img width="918" alt="Image" src="https://github.com/user-attachments/assets/7b632dd9-fc39-442a-9a3b-bc7633cb5c61" />
 
 - Ready for testing.
   - Click `test and cutover` then select `launch test instance`
