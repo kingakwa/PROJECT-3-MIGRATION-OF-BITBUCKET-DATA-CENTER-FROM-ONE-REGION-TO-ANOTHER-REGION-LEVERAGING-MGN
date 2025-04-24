@@ -59,6 +59,7 @@ sudo systemctl enable docker
 ```
 docker ps #to see the containers.
 ```
+
 <img width="467" alt="Image" src="https://github.com/user-attachments/assets/b85daaf8-27fb-4164-8462-8f9677573a70" />
 
 
@@ -67,10 +68,11 @@ docker ps #to see the containers.
 sudo systemctl status docker
 ```
 
+
 <img width="482" alt="Image" src="https://github.com/user-attachments/assets/261fc806-326e-4fea-8dd5-b358e9c5bd08" />
 
 
-- Copy the public ip address of the instance and add the port number e.g `52.7.182.131:7990`
+- Copy the public ip address of the instance and add the port number and paste on your brower e.g `52.7.182.131:7990`
 - Login into your bitbucket account and access your data to be migrated to the new region using AWS migration Application Migration Service
  
 ![Image](https://github.com/user-attachments/assets/f4f49d03-be5e-40ed-96d2-7276105e32af)
@@ -86,13 +88,14 @@ AWS MGN will create staging resources in the target region to replicate the sour
 -In the Source Servers section, click `Add Source Server`.
 - Download the Replication Agent installer for your operating system
 - Select `Linux` or `windows`
-- Add `the access key` and `secret key` gotten from `IAM` `user` `access key` from aws.
+- Choose to replicated all disks (Enter to replicated all disks)
+- Add `the access key ID` and `secret Access key` gotten from `IAM User` from aws.
 
   
 <img width="904" alt="Image" src="https://github.com/user-attachments/assets/035d14e8-e41b-43fb-b19f-d67f05cfe407" />
 
 
--Terminal
+- on the source server Terminal
 
   - Download the installer using this command on you source terminal
  
@@ -167,7 +170,7 @@ The source server should appear as "Pending" or "Ready for replication."
     
     - This shows that we have migrated to the server.
  
- - source server
+ - On MGN source server
   - click  `test and cutover` and select `mark as ready for cutover` then take continue. This is do the final migration, will create a new server for your actual migration. the cutover will delete a replication server.
 
     <img width="884" alt="Image" src="https://github.com/user-attachments/assets/ad0634e4-179d-4020-85c2-db3a77e056e2" />
