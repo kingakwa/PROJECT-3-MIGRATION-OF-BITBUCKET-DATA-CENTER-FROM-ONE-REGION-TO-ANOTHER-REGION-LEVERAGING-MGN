@@ -124,25 +124,45 @@ The source server should appear as "Pending" or "Ready for replication."
 -  
 ![Image](https://github.com/user-attachments/assets/317e5a40-78d2-4941-bcbc-9c0bcd84aeb3)
 
-- Ready for testing.
+   **Ready for Testing**
   - Click `test and cutover` then select `launch test instance`
   - An IP internal main testing server is created, you can test this instance in the internet.
   - if it does not have a public address, create one using `Elastic IP`
 
         
-- test in progress
+- **Test in Progress**
+  
+  -Select `Test and Cutover` in the top right corner, then select `Launch test instances`.
+
+  **Launch the Test Instance**
+  
+  - Select the `Source Servers` => `Test and Cutover` => `Launch Test Instance`
+
+  - A test instance should be launched as per your Launch Template
+
+  - Click on the `Source Servers` => Lifecycle => Click on the `job id` and monitor the progress
+
+   - Go to EC2 => A new AWS MGN service conversion server should be launched
+
+  - Once the conversion is complete a test instance should be available
+
+  - Test the application by browsing using the test instances’ public IP
+  - if the Public IP is not availble then;
   - creat an Elastic IP address
-  - Go to the ec2 internal instance and select it
+  - Go to the EC2 internal instance and select it
   - select `elastic Ip` at the left
   - click `Allocate elastic ip address`
   - select the allocated Ip and take `associate IP`
   - chose the `instance` and the `private ip`
   - also attached a `security group` to access it openning the right ports e.g `7990`
+    
     <img width="907" alt="Image" src="https://github.com/user-attachments/assets/0744e486-ab8e-4e40-ac13-f0346e240a20" />
     <img width="955" alt="Image" src="https://github.com/user-attachments/assets/9307de85-9a6a-4121-8952-e7d6bbe5ba0c" />
 
     - An IP internal main testing server is created, you can test this instance in the internet.
+      
      ![Image](https://github.com/user-attachments/assets/183a3492-4dc8-4be8-af16-801323ea05a7)
+    
     - This shows that we have migrated to the server.
  
  - source server
@@ -151,6 +171,7 @@ The source server should appear as "Pending" or "Ready for replication."
     <img width="884" alt="Image" src="https://github.com/user-attachments/assets/ad0634e4-179d-4020-85c2-db3a77e056e2" />
 
     - The replication instances are terminated
+    - 
       <img width="928" alt="Image" src="https://github.com/user-attachments/assets/ad2cf711-ffaa-4429-ad1c-3277da70279e" />
  
   - Perform a Test Cutover
@@ -159,10 +180,15 @@ The source server should appear as "Pending" or "Ready for replication."
  <img width="884" alt="Image" src="https://github.com/user-attachments/assets/82585c51-1bf2-478e-a065-d9d997c3da15" />
  
 - cutover in progress 
-  - On the Source Servers page, select the server `marked Ready for Cutover`.
+  - On the Source Servers, select the server `marked Ready for Cutover`.
 
-- Click `Launch Cutover Instances`.
 
+    **launch the cutover instance** 
+
+- select the `source Servers` => `Test and cutover` => `Launch Cutover instance`
+- A cutover instance should be launched as per your launch template
+- Go to EC2 => A new AWS MGN service conversion server should be launch 
+- once this is completed a cutover instance should be available
 - Review and confirm the instance settings, then click `Launch`.
 
 Expected Result: The cutover instance is launched in AWS, and the server enters the Cutover in Progress state. This step involves transitioning production traffic to the new environment.
