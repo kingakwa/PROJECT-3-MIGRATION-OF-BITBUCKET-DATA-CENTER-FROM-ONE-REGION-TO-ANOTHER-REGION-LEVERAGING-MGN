@@ -66,9 +66,13 @@ docker ps #to see the containers.
 ```
 sudo systemctl status docker
 ```
+
 <img width="482" alt="Image" src="https://github.com/user-attachments/assets/261fc806-326e-4fea-8dd5-b358e9c5bd08" />
 
+
 - copy the public ip address of the instance and add the port number e.g `52.7.182.131:7990`
+- login into your bitbucket account and access your data to be migrated to the new region using AWS migration Application Migration Service
+ 
 ![Image](https://github.com/user-attachments/assets/f4f49d03-be5e-40ed-96d2-7276105e32af)
 
 # Perform the Migration Using MGN
@@ -96,10 +100,13 @@ AWS MGN will create staging resources in the target region to replicate the sour
 
  - Make the installer executable and Run the installer with root privileges using this command, make sure Replace <AWS_REGION> with the region where AWS MGN is configured (e.g., us-west-2 target region)
 
+## Application Agent
+
   -  Install the application agent
   ```
   sudo chmod +x aws-replication-installer-init; sudo ./aws-replication-installer-init --region us-west-2 # Target region Oregon
   ```
+
   <img width="713" alt="Image" src="https://github.com/user-attachments/assets/fb40e040-9c63-4fc4-98ec-f0ed16c32866" />
   
 
@@ -147,21 +154,25 @@ The source server should appear as "Pending" or "Ready for replication."
       <img width="928" alt="Image" src="https://github.com/user-attachments/assets/ad2cf711-ffaa-4429-ad1c-3277da70279e" />
  
   - Perform a Test Cutover
-  - select test and cutover and select launch cutover instance and select launch; this will create another server to replicate the serve.
+  - select `test and cutover` and select `launch cutover instance` and select `launch`; this will create another server to replicate the serve.
 
  <img width="884" alt="Image" src="https://github.com/user-attachments/assets/82585c51-1bf2-478e-a065-d9d997c3da15" />
  
 - cutover in progress 
-  - On the Source Servers page, select the server marked Ready for Cutover.
+  - On the Source Servers page, select the server `marked Ready for Cutover`.
 
-- Click Launch Cutover Instances.
+- Click `Launch Cutover Instances`.
 
-- Review and confirm the instance settings, then click Launch.
+- Review and confirm the instance settings, then click `Launch`.
 
 Expected Result: The cutover instance is launched in AWS, and the server enters the Cutover in Progress state. This step involves transitioning production traffic to the new environment.
+
 <img width="887" alt="Image" src="https://github.com/user-attachments/assets/f30b539f-95c6-4573-b569-23a7c4dabcb9" />
+
  - New servers (IP internal, webapp-server, AWS application Migration Service and Replication server) are created with with all the data inside
+ - 
    <img width="928" alt="Image" src="https://github.com/user-attachments/assets/f959b95a-c1ad-4513-9221-6a56238ed7f8" />
+   
    - Test the newly Internal server by associating the elastic ip and security group before testing on the server.
    
 - Cutover Complete
@@ -178,4 +189,7 @@ Expected Result: The server status changes to Cutover Complete, signifying that 
 This project successfully outlines the migration of Bitbucket data from the AWS N Virginia region to the Oregon region using AWS Application Migration Service (MGN). By following the AWS Console procedures, the migration ensures minimal downtime and preserves data integrity. This process is ideal for organizations looking to transition workloads across AWS regions.
 
 
+## contribution
+- more ideas on region migration are welcome!
 
+  HAPPY LEARNING 
