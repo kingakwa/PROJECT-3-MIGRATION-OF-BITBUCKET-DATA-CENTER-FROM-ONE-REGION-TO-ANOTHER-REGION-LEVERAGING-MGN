@@ -18,7 +18,7 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 
 - DNS Update:- Redirect traffic to servers in Oregon.
 - 
-  ![image](https://github.com/user-attachments/assets/91daf048-8a73-405f-9643-ca428c92c9aa)
+![image](https://github.com/user-attachments/assets/75c714aa-379a-4a89-b68e-c7bb2581e1ee)
 
 ## Bitbucket Data Center in AWS:
 
