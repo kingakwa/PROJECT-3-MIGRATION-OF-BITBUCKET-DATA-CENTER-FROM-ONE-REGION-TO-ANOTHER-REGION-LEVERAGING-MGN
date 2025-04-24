@@ -17,7 +17,9 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 - AWS MGN:- Automates replication and server launch.
 
 - DNS Update:- Redirect traffic to servers in Oregon.
-  
+- 
+  ![image](https://github.com/user-attachments/assets/91daf048-8a73-405f-9643-ca428c92c9aa)
+
 ## Bitbucket Data Center in AWS:
 
 Log in to the AWS Management Console and launch an instance. use t2medium, linux 2, 50GB, keypair,enable auto-assign public IP, open port 22(ssh), 7990(bitbucket), take note of the region.
