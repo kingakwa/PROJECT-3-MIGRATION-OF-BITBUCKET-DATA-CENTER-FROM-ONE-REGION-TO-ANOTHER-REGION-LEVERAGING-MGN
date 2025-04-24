@@ -55,13 +55,13 @@ sudo systemctl enable docker
 ```
 
 
-- run 
+- Run 
 ```
 docker ps #to see the containers.
 ```
 <img width="467" alt="Image" src="https://github.com/user-attachments/assets/b85daaf8-27fb-4164-8462-8f9677573a70" />
 
-- run
+
 - Check if docker is actice and running 
 ```
 sudo systemctl status docker
