@@ -8,6 +8,16 @@ AWS Application Migration Service (MGN): Verify that MGN is enabled in both the 
 Networking: Ensure proper VPC, subnets, security groups, and routing are configured in both regions to support Bitbucket’s requirements.
 Backups: Create a full backup of your Bitbucket Data Center (database, shared storage, and configuration files) before migration.
 
+## Architecture
+- Components
+- Source Region (us-east-1):- EC2 instances hosting the Bitbucket application and data.
+
+- Target Region (us-west-2):- Replicated EC2 instances for hosting Bitbucket data after migration.
+
+- AWS MGN:- Automates replication and server launch.
+
+- DNS Update:- Redirect traffic to servers in Oregon.
+  
 ## Bitbucket Data Center in AWS:
 
 Log in to the AWS Management Console and launch an instance. use t2medium, linux 2, 50GB, keypair,enable auto-assign public IP, open port 22(ssh), 7990(bitbucket), take note of the region.
