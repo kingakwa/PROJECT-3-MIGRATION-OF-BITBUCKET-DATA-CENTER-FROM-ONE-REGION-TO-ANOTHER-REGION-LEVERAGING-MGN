@@ -99,10 +99,9 @@ AWS MGN will create staging resources in the target region to replicate the sour
 - Add `the access key ID` and `secret Access key` gotten from `IAM User` from aws.
   
 - **Generate the required AWS credentials**
-- Go to IAM => User => Add User
+- Go to `IAM` => `User` => `Add User`
 - Provide a user name (based on your choice)
-- Select the Access Type as Programmatic
-- Choose the attach existing policies directly and attach – AWSApplicationMigrationAgentPolicy
+- Choose the attach existing policies directly and attach – `AWSApplicationMigrationAgentPolicy`
 
   <img width="931" alt="Image" src="https://github.com/user-attachments/assets/23caf94a-3e89-4e58-9a1d-a4543e9afb15" />
 
@@ -132,7 +131,7 @@ AWS MGN will create staging resources in the target region to replicate the sour
   <img width="713" alt="Image" src="https://github.com/user-attachments/assets/fb40e040-9c63-4fc4-98ec-f0ed16c32866" />
   
 
-- Verify Installation
+- **Verify Installation**
 After installation, the replication agent will register the source server with AWS MGN.
 - Check the AWS MGN Console in the Source Servers section:
 The source server should appear as "Pending" or "Ready for replication."
