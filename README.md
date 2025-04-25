@@ -82,15 +82,32 @@ sudo systemctl status docker
 In the MGN console, start the replication process.
 AWS MGN will create staging resources in the target region to replicate the source instances.
 
-# intallation of application agent
+# intallation of replication agent
 - Use aws-mgn application migration service in the target region (Oregon)
 - Navigate to the AWS Application Migration Service (MGN) section.
--In the Source Servers section, click `Add Source Server`.
+  
+- **Initialize the AWS MGN**
+
+- In order to use the AWS MGN service, the service must first be initialized for any
+  AWS region in which you plan to use AWS MGN and copy the server over, which is your target region (us-west-2)
+- Go to AWS MGN => `Getting Started` => `Set up an Application Migration Service`
+
+-In the target Servers section, click `Add Server`.
 - Download the Replication Agent installer for your operating system
 - Select `Linux` or `windows`
 - Choose to replicated all disks (Enter to replicated all disks)
 - Add `the access key ID` and `secret Access key` gotten from `IAM User` from aws.
+  
+- **Generate the required AWS credentials**
+- Go to IAM => User => Add User
+- Provide a user name (based on your choice)
+- Select the Access Type as Programmatic
+- Choose the attach existing policies directly and attach – AWSApplicationMigrationAgentPolicy
 
+  <img width="931" alt="Image" src="https://github.com/user-attachments/assets/23caf94a-3e89-4e58-9a1d-a4543e9afb15" />
+
+  
+- After the user is created store/ copy the username, access key id, and the secret access key
   
 <img width="904" alt="Image" src="https://github.com/user-attachments/assets/035d14e8-e41b-43fb-b19f-d67f05cfe407" />
 
