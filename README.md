@@ -2,7 +2,7 @@
 
 ## Migration of Bitbucket Data from one region(Source:N. Virginia) to another(Target:Oregon)
 ## Prerequisites
-AWS Account: Ensure you have access to the AWS accounts for both source and target regions.
+AWS Account: Ensure you have access to the AWS account in which the migration will be executed 
 Bitbucket Data Center: Ensure you have administrative access to your existing Bitbucket Data Center.
 AWS Application Migration Service (MGN): Verify that MGN is enabled in both the source and target regions.
 Networking: Ensure proper VPC, subnets, security groups, and routing are configured in both regions to support Bitbucket’s requirements.
@@ -22,12 +22,12 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 
 ## Bitbucket Data Center in AWS:
 
-- Log in to the AWS Management Console and launch an instance. use t2medium, linux 2, 50GB, keypair,enable auto-assign public IP, open port 22(ssh), 7990(bitbucket), take note of the region.
+- Log in to the AWS Management Console and launch an instance. use instance type:t2.medium, linux 2, 50GB storage, keypair,enable auto-assign public IP, open port 22(ssh), 7990(bitbucket), take note of the region.
 
 <img width="899" alt="Image" src="https://github.com/user-attachments/assets/8a180850-558d-4f95-89d2-af899ab33f3a" />
 
 ## user data
-- The user data will update the system, install docker, create a directory for bitbucket data, and create the bitbucket docker container on the server.
+-The user data will be utilized to update the system, install Docker, set up a directory for storing Bitbucket data, and deploy the Bitbucket Docker container on the server.
 ```
 #!/bin/bash
 # Update the system
@@ -72,15 +72,12 @@ sudo systemctl status docker
 <img width="482" alt="Image" src="https://github.com/user-attachments/assets/261fc806-326e-4fea-8dd5-b358e9c5bd08" />
 
 
-- Copy the public ip address of the instance and add the port number and paste on your brower e.g `52.7.182.131:7990`
-- Login into your bitbucket account and access your data to be migrated to the new region using AWS migration Application Migration Service
+- Copy the public ip address of the instance and add the port number and paste on your brower e.g `52.7.182.131:7990` to access it.
+
  
-![Image](https://github.com/user-attachments/assets/f4f49d03-be5e-40ed-96d2-7276105e32af)
+![Image](https://github.com/user-attachments/assets/936a8451-0abb-4fe3-b920-2498c26fec82)
 
 # Perform the Migration Using MGN
-## Start Replication:
-In the MGN console, start the replication process.
-AWS MGN will create staging resources in the target region to replicate the source instances.
 
 # intallation of replication agent
 - Use aws-mgn application migration service in the target region (Oregon)
