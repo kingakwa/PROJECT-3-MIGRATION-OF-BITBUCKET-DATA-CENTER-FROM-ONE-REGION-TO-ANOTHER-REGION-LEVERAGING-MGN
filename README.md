@@ -123,26 +123,21 @@ sudo systemctl status docker
   <img width="713" alt="Image" src="https://github.com/user-attachments/assets/fb40e040-9c63-4fc4-98ec-f0ed16c32866" />
   
 
-- **Verify Installation**
-After installation, the replication agent will register the source server with AWS MGN.
+ **Verify Installation**
 - Check the AWS MGN Console in the Source Servers section:
 The source server should appear as "Pending" or "Ready for replication."
-
 - Select `Back`
-- Select `source server`
-
+- Select `source server name`
+  
 - Monitor the replication as it moves from `Not ready to ready to test, test in progress, ready for cutover, cutover in progress, cutover complete`
-- The replication intiation step will have this created:
--  Create security groups, Launch Replication Server, Boot Replication Server, Authenticate with service, Download replication software, Create staging disks, Attach staging disks, Pair Replication Server with AWS Replication Agent, Connect AWS Replication Agent to Replication Server and Start data transfer
+- On the migration dash board, the lifecycle indicate `not ready`
+- Once data replication reaches 100%, the server status will change to `Ready for Test`.
+  
   
 ![Image](https://github.com/user-attachments/assets/317e5a40-78d2-4941-bcbc-9c0bcd84aeb3)
 
    **Ready for Testing**
-  - Click `test and cutover` then select `launch test instance`
-  - An IP internal main testing server is created, you can test this instance in the internet.
-  - If it does not have a public address, create one using `Elastic IP`
 
-        
 - **Test in Progress**
   
   - Select `Test and Cutover` in the top right corner, then select `Launch test instances`.
@@ -174,12 +169,11 @@ The source server should appear as "Pending" or "Ready for replication."
 
     - An IP internal main testing server is created, you can test this instance in the internet.
       
-     ![Image](https://github.com/user-attachments/assets/183a3492-4dc8-4be8-af16-801323ea05a7)
+![Image](https://github.com/user-attachments/assets/936a8451-0abb-4fe3-b920-2498c26fec82)
     
-    - This shows that we have migrated to the server.
  
  - On MGN source server
-  - click  `test and cutover` and select `mark as ready for cutover` then take continue. This is do the final migration, will create a new server for your actual migration. the cutover will delete a replication server.
+  - click  `test and cutover` and select `mark as ready for cutover` then take continue. This is do the final migration, will create a new server for your actual migration. the cutover will delete the replication server.
 
     <img width="884" alt="Image" src="https://github.com/user-attachments/assets/ad0634e4-179d-4020-85c2-db3a77e056e2" />
 
