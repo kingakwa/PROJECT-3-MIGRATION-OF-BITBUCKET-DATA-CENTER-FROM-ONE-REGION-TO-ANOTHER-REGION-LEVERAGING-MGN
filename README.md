@@ -22,11 +22,11 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 
 ## Bitbucket Data Center in AWS:
 
-- Log in to the AWS Management Console and launch an instance. use instance type:t2.medium, amazon Machine image:linux 2AMI, Configure storage:50GB, keypair, select a VPC and Subnet, Enable auto-assign public IP, Allow traffic from: port 22(ssh), 7990(bitbucket) .
+- Log in to the AWS Management Console and launch an instance. use instance type:`t2.medium`, amazon Machine image:`linux 2AMI`, Configure storage:`50GB`, Select a `keypair`, select a `VPC` and `Subnet`, `Enable` auto-assign public IP, Allow traffic from: port `22`(ssh), `7990`(bitbucket) .
 
 <img width="899" alt="Image" src="https://github.com/user-attachments/assets/8a180850-558d-4f95-89d2-af899ab33f3a" />
 
-## user data
+## Add a user data on Advance details
 -The user data will be utilized to update the system, install Docker, set up a directory for storing Bitbucket data, and deploy the Bitbucket Docker container on the server.
 ```
 #!/bin/bash
@@ -53,9 +53,10 @@ docker run -v /var/atlassian/application-data/bitbucket:/var/atlassian/applicati
 # Enable Docker to start on boot
 sudo systemctl enable docker 
 ```
-
-
-- Run 
+- select `Launch instance` to launch the server.
+- select the instance and use `EC2 instance connect` or `ssh client(Git bash)` to connect to the server on the terminal. 
+  
+- On your terminal Run 
 ```
 docker ps #to see the containers.
 ```
@@ -63,7 +64,7 @@ docker ps #to see the containers.
 <img width="467" alt="Image" src="https://github.com/user-attachments/assets/b85daaf8-27fb-4164-8462-8f9677573a70" />
 
 
-- Check if docker is actice and running 
+- Check if docker is active by running 
 ```
 sudo systemctl status docker
 ```
@@ -72,7 +73,7 @@ sudo systemctl status docker
 <img width="482" alt="Image" src="https://github.com/user-attachments/assets/261fc806-326e-4fea-8dd5-b358e9c5bd08" />
 
 
-- Copy the public ip address of the instance and add the port number and paste on your brower e.g `52.7.182.131:7990` to access it.
+- On the on your server, select it and copy the public ip address of the instance and paste on your brower adding the port number e.g `52.7.182.131:7990` to access it.
 
  
 ![Image](https://github.com/user-attachments/assets/936a8451-0abb-4fe3-b920-2498c26fec82)
