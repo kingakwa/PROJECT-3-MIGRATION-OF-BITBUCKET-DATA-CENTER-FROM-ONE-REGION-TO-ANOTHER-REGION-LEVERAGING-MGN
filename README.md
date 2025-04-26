@@ -80,48 +80,42 @@ sudo systemctl status docker
 
 # Perform the Migration Using MGN
 
-# intallation of replication agent
+# Intallation of replication agent
 - Use aws-mgn application migration service in the target region (Oregon)
 - Navigate to the AWS Application Migration Service (MGN) section.
   
 - **Initialize the AWS MGN**
 
-- In order to use the AWS MGN service, the service must first be initialized for any
-  AWS region in which you plan to use AWS MGN and copy the server over, which is your target region (us-west-2)
+-To use the AWS MGN service for the first time, you must initialize it in the AWS region where you plan to replicate your server, which in this case is the target region (us-west-2).
 - Go to AWS MGN => `Getting Started` => `Set up an Application Migration Service`
-
 -In the target Servers section, click `Add Server`.
-- Download the Replication Agent installer for your operating system
-- Select `Linux` or `windows`
-- Choose to replicated all disks (Enter to replicated all disks)
-- Add `the access key ID` and `secret Access key` gotten from `IAM User` from aws.
+
+**AWS Replication Agent installation**
+
+- Select you operating system `Linux` or `windows`
+- Select your replication preference `all disks` (Enter to replicated all disks)
+- Add your `access key ID` and `secret Access key` gotten from `IAM User`. if you don't have you can generate it as follows
   
 - **Generate the required AWS credentials**
-- Go to `IAM` => `User` => `Add User`
-- Provide a user name (based on your choice)
+- Go to `IAM` => `User` => `User` `#if you don't have a user create it and add`
 - Choose the attach existing policies directly and attach – `AWSApplicationMigrationAgentPolicy`
 
-  <img width="931" alt="Image" src="https://github.com/user-attachments/assets/23caf94a-3e89-4e58-9a1d-a4543e9afb15" />
-
-  
-- After the user is created store/ copy the username, access key id, and the secret access key
+    <img width="931" alt="Image" src="https://github.com/user-attachments/assets/23caf94a-3e89-4e58-9a1d-a4543e9afb15" />
+    
+- Click on `User` in the left-hand pane, then click the user's name. Copy the Access Key ID and Secret Access Key.
+  - Past the IAM keys on 
   
 <img width="904" alt="Image" src="https://github.com/user-attachments/assets/035d14e8-e41b-43fb-b19f-d67f05cfe407" />
 
 
-- on the source server Terminal
-
-  - Download the installer using this command on you source terminal
+  - Download the installer by copying this command and pasting on you source terminal, make sure you Replace <AWS_REGION> with the region where AWS MGN is configured (e.g., us-west-2 target region)
  
    ```
   sudo wget -O ./aws-replication-installer-init https://aws-application-migration-service-us-east-1.s3.us-east-1.amazonaws.com/latest/linux/aws-replication-installer-init
    ```
 
- - Make the installer executable and Run the installer with root privileges using this command, make sure Replace <AWS_REGION> with the region where AWS MGN is configured (e.g., us-west-2 target region)
+ - Make the installer executable and Run the installer with root privileges by Copy and input the command below into the command line on your source server. 
 
-## Application Agent
-
-  -  Install the application agent
   ```
   sudo chmod +x aws-replication-installer-init; sudo ./aws-replication-installer-init --region us-west-2 # Target region Oregon
   ```
