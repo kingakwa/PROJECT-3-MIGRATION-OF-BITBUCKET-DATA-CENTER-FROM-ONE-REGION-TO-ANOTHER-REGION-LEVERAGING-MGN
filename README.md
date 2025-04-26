@@ -18,7 +18,10 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 
 - DNS Update:- Redirect traffic to servers in Oregon.
   
+  
 <img width="794" alt="Image" src="https://github.com/user-attachments/assets/51628417-02ca-48fd-a407-e8e2594708be" />
+
+
 ## Bitbucket Data Center in AWS:
 
 - Log in to the AWS Management Console and launch an instance. use instance type:`t2.medium`, amazon Machine image:`linux 2AMI`, Configure storage:`50GB`, Select a `keypair`, select a `VPC` and `Subnet`, `Enable` auto-assign public IP, Allow traffic from: port `22`(ssh), `7990`(bitbucket) .
