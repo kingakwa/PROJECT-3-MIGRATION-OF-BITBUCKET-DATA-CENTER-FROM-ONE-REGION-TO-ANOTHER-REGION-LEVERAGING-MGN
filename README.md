@@ -22,7 +22,7 @@ Backups: Create a full backup of your Bitbucket Data Center (database, shared st
 
 ## Bitbucket Data Center in AWS:
 
-- Log in to the AWS Management Console and launch an instance. use instance type:t2.medium, linux 2, 50GB storage, keypair,enable auto-assign public IP, open port 22(ssh), 7990(bitbucket), take note of the region.
+- Log in to the AWS Management Console and launch an instance. use instance type:t2.medium, amazon Machine image:linux 2AMI, Configure storage:50GB, keypair, select a VPC and Subnet, Enable auto-assign public IP, Allow traffic from: port 22(ssh), 7990(bitbucket) .
 
 <img width="899" alt="Image" src="https://github.com/user-attachments/assets/8a180850-558d-4f95-89d2-af899ab33f3a" />
 
