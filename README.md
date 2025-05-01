@@ -4,9 +4,9 @@
 ## Prerequisites
 AWS Account: Ensure you have access to the AWS account in which the migration will be executed 
 Bitbucket Data Center: Ensure you have administrative access to your existing Bitbucket Data Center.
-AWS Application Migration Service (MGN): Verify that MGN is enabled in both the source and target regions.
-Networking: Ensure proper VPC, subnets, security groups, and routing are configured in both regions to support Bitbucket’s requirements.
-Backups: Create a full backup of your Bitbucket Data Center (database, shared storage, and configuration files) before migration.
+**AWS Application Migration Service (MGN)**: Verify that MGN is enabled in both the source and target regions.
+**Networking**: Ensure proper VPC, subnets, security groups, and routing are configured in both regions to support Bitbucket’s requirements.
+**Backups**: Create a full backup of your Bitbucket Data Center (database, shared storage, and configuration files) before migration.
 
 ## Architecture
 
