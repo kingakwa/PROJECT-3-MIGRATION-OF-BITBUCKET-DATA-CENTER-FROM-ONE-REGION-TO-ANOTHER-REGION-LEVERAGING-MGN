@@ -58,7 +58,8 @@ sudo systemctl enable docker
 - select `Launch instance` to launch the server.
 - select the instance and use `EC2 instance connect` or `ssh client(Git bash)` to connect to the server on the terminal. 
   
-- On your terminal Run 
+- On your terminal Run
+- SSH into your Linux EC2 instance in your source region and check if docker is install and active using this commands:
 ```
 docker ps #to see the containers.
 ```
@@ -75,7 +76,7 @@ sudo systemctl status docker
 <img width="482" alt="Image" src="https://github.com/user-attachments/assets/261fc806-326e-4fea-8dd5-b358e9c5bd08" />
 
 
-- On the on your server, select it and copy the public ip address of the instance and paste on your brower adding the port number e.g `52.7.182.131:7990` to access it.
+- On your server, select the EC2 instance and copy the public ip address and paste on your brower adding the port number e.g `52.7.182.131:7990` to access it.
 
  
 ![Image](https://github.com/user-attachments/assets/936a8451-0abb-4fe3-b920-2498c26fec82)
@@ -88,29 +89,30 @@ sudo systemctl status docker
   
 - **Initialize the AWS MGN**
 
--To use the AWS MGN service for the first time, you must initialize it in the AWS region where you plan to replicate your server, which in this case is the target region (us-west-2).
-- Go to AWS MGN => `Getting Started` => `Set up an Application Migration Service`
--In the target Servers section, click `Add Server`.
+-In order to use Application Migration Service for the first time, the service must first be initialize for any AWS region in which you plan to use MGN and copy the server over i.e. your Target region(us-west-2).
+- Go to `AWS MGN` => `Getting Started` => `Set up an Application Migration Service`
+- leave all the option as it is and click `Add Server`
+  
 
 **AWS Replication Agent installation**
-
+  on MGN
 - Select you operating system `Linux` or `windows`
 - Select your replication preference `all disks` (Enter to replicated all disks)
 - Add your `access key ID` and `secret Access key` gotten from `IAM User`. if you don't have you can generate it as follows
   
 - **Generate the required AWS credentials**
-- Go to `IAM` => `User` => `User` `#if you don't have a user create it and add`
-- Choose the attach existing policies directly and attach – `AWSApplicationMigrationAgentPolicy`
+- Go to `IAM` => `User` => `User` `#if you don't have a user create it and add, provide 'user name' and select 'Access type' as Programmatic'`
+- Choose the `Attach existing policies` directly and attach – `AWSApplicationMigrationAgentPolicy`
 
     <img width="931" alt="Image" src="https://github.com/user-attachments/assets/23caf94a-3e89-4e58-9a1d-a4543e9afb15" />
     
 - Click on `User` in the left-hand pane, then click the user's name. Copy the Access Key ID and Secret Access Key.
-  - Past the IAM keys on 
+  - Past the IAM keys on MGN were required.
   
 <img width="904" alt="Image" src="https://github.com/user-attachments/assets/035d14e8-e41b-43fb-b19f-d67f05cfe407" />
 
 
-  - Download the installer by copying this command and pasting on you source terminal, make sure you Replace <AWS_REGION> with the region where AWS MGN is configured (e.g., us-west-2 target region)
+  - Download the installer by copying this command and pasting on you source server on the terminal, make sure you Replace <AWS_REGION> with the region where AWS MGN is configured (e.g., us-west-2 target region)
  
    ```
   sudo wget -O ./aws-replication-installer-init https://aws-application-migration-service-us-east-1.s3.us-east-1.amazonaws.com/latest/linux/aws-replication-installer-init
@@ -126,8 +128,8 @@ sudo systemctl status docker
   
 
  **Verify Installation**
-- Check the AWS MGN Console in the Source Servers section:
-The source server should appear as "Pending" or "Ready for replication."
+- Check the AWS MGN Console in the target Servers section:
+The target server should appear as "Pending" or "Ready for replication."
 - Select `Back`
 - Select `source server name`
   
@@ -146,7 +148,7 @@ The source server should appear as "Pending" or "Ready for replication."
 
   **Launch the Test Instance**
   
-  - Select the `Source Servers` => `Test and Cutover` => `Launch Test Instance`
+  - Select the `target Servers` => `Test and Cutover` => `Launch Test Instance`
 
   - A test instance should be launched as per your Launch Template
 
