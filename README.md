@@ -141,21 +141,15 @@ The target server should appear as "Pending" or "Ready for replication."
   
 ![Image](https://github.com/user-attachments/assets/317e5a40-78d2-4941-bcbc-9c0bcd84aeb3)
 
-   **Ready for Testing**
-
-- **Test in Progress**
-  
-  - Select `Test and Cutover` in the top right corner, then select `Launch test instances`.
 
   **Launch the Test Instance**
-  
-  - Select the `target Servers` => `Test and Cutover` => `Launch Test Instance`
+
+  - Select the `Source Servers` => `Test and Cutover` => `Launch Test Instance`
 
   - A test instance should be launched as per your Launch Template
-
   - Click on the `Source Servers` => Lifecycle => Click on the `job id` and monitor the progress
 
-   - Go to EC2 => A new AWS MGN service conversion server should be launched
+   - Go to EC2 => A new AWS Application Migration Service Conversion server should be launched
 
   - Once the conversion is complete a test instance should be available
 
