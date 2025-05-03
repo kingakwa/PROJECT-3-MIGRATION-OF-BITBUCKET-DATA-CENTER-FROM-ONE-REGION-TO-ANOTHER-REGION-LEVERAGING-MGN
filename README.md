@@ -53,7 +53,8 @@ docker run -v /var/atlassian/application-data/bitbucket:/var/atlassian/applicati
   atlassian/bitbucket-server
 
 # Enable Docker to start on boot
-sudo systemctl enable docker 
+sudo systemctl enable docker
+sudo systemctl start docker
 ```
 - select `Launch instance` to launch the server.
 - select the instance and use `EC2 instance connect` or `ssh client(Git bash)` to connect to the server on the terminal. 
@@ -61,7 +62,7 @@ sudo systemctl enable docker
 - On your terminal Run
 - SSH into your Linux EC2 instance in your source region and check if docker is install and active using this commands:
 ```
-docker ps #to see the containers.
+docker ps -a #to see the containers.
 ```
 
 <img width="467" alt="Image" src="https://github.com/user-attachments/assets/b85daaf8-27fb-4164-8462-8f9677573a70" />
