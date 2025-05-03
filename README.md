@@ -167,12 +167,23 @@ The target server should appear as "Pending" or "Ready for replication."
     <img width="955" alt="Image" src="https://github.com/user-attachments/assets/9307de85-9a6a-4121-8952-e7d6bbe5ba0c" />
 
     - An IP internal main testing server is created, you can test this instance in the internet.
-      
+   
 ![Image](https://github.com/user-attachments/assets/936a8451-0abb-4fe3-b920-2498c26fec82)
-    
- 
- - On MGN source server
-  - click  `test and cutover` and select `mark as ready for cutover` then take continue. This is do the final migration, will create a new server for your actual migration. the cutover will delete the replication server.
+     -After testing is complete => select the `source server` => `Test and Cutover` => `Mark ready for cutover` => `Continue` 
+     This is to do the final migration, will create a new server for your actual migration. the cutover will delete the replication server.
+
+**Launch Cutover Instance**
+
+ - On MGN source server, when the lifecyle indicate ready for cutover:
+- Select the `source Servers` => `Test and cutover` => `Launch Cutover instance`
+- Review and confirm the instance settings, then click `Launch`.
+- A cutover instance should be launched as per your launch template
+- click on the `source server`=> `lifecycle` => `Job ID` and observe the progress.
+- Go to EC2 => A new AWS Application Migration Service Conversion server should be launched 
+- Once this is completed a cutover instance should be available
+- Test your application by browing using your cutover instance's public IP
+
+   
 
     <img width="884" alt="Image" src="https://github.com/user-attachments/assets/ad0634e4-179d-4020-85c2-db3a77e056e2" />
 
@@ -193,11 +204,7 @@ The target server should appear as "Pending" or "Ready for replication."
 
     **launch the cutover instance** 
 
-- Select the `source Servers` => `Test and cutover` => `Launch Cutover instance`
-- A cutover instance should be launched as per your launch template
-- Go to EC2 => A new AWS MGN service conversion server should be launch 
-- Once this is completed a cutover instance should be available
-- Review and confirm the instance settings, then click `Launch`.
+
 
 **Expected** Result: The cutover instance is launched in AWS, and the server enters the Cutover in Progress state. This step involves transitioning production traffic to the new environment.
 
@@ -211,11 +218,11 @@ The target server should appear as "Pending" or "Ready for replication."
    
 - Cutover Complete
   - After verifying that the cutover instance is operating correctly, return to the Source Servers page.
-  - Click `test and cutover` `finalize cutover` # all the servers involved in the migration and replication data will be deleted acept you last application server. 
-  - click `Mark as Cutover Complete`.
+  - Click `test and cutover` `finalize cutover` # all the servers involved in the migration and replication data will be deleted except you last application server. 
+    
 
-**Expected Result:** The server status changes to Cutover Complete, signifying that the migration is finished. The cutover instance is now fully operational, and the source server can be archived (take `action` and select `mark as archived` ) or decommissioned as needed.
-- Migration successful to the new region Oregon us-west-2
+**Expected Result:** The server status changes to Cutover Complete, signifying that the migration is finished. The cutover instance is now fully operational, and the source server can be archived take `action` and select `mark as archived` or decommissioned as needed.
+- Migration successful to the new region Oregon us-west-2.
 
 <img width="908" alt="Image" src="https://github.com/user-attachments/assets/f2b11b86-192c-44ea-bb4d-fd02a3045fc8" />
 
